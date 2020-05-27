@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://losk773:losk773@cluster0-3wiig.mongodb.net/dev_social?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
