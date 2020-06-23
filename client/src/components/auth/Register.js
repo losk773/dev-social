@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export const Register = ({setAlert}) => {
+export const Register = ({setAlert, register}) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +21,7 @@ export const Register = ({setAlert}) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger', 3000);
     } else {
-      console.log('SUCCESS');
+      register({name, email, password});
     }
   }
   return (
@@ -36,7 +36,6 @@ export const Register = ({setAlert}) => {
             name="name" 
             value={name}
             onChange={onChange}
-            required
           />
         </div>
         <div className="form-group">
@@ -59,7 +58,6 @@ export const Register = ({setAlert}) => {
             name="password"
             value={password}
             onChange={onChange}
-            minLength="6"
           />
         </div>
         <div className="form-group">
@@ -69,7 +67,6 @@ export const Register = ({setAlert}) => {
             name="password2"
             value={password2}
             onChange={onChange}
-            minLength="6"
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
@@ -83,4 +80,5 @@ export const Register = ({setAlert}) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
