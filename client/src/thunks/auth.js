@@ -7,7 +7,7 @@ import {
   getUserError,
   loginSuccess,
   loginError,
-  setAlert 
+  setAlert,
 } from '../actions';
 import { setAuthToken } from '../utils';
 

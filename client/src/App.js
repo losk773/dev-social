@@ -2,12 +2,15 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Navbar } from "./components/layout/Navbar";
 import { Landing } from "./components/layout/Landing";
-import { Login } from './components/auth/Login';
 
-import { RegisterContainer, LoginContainer } from './containers';
-import { AlertContainer } from './containers';
+import { 
+  RegisterContainer, 
+  LoginContainer, 
+  NavbarContainer,
+  AlertContainer,
+} from './containers';
+import {  } from './containers';
 import { getUser } from './thunks';
 
 import './App.css';
@@ -25,7 +28,7 @@ const App = ({getUser}) => {
   return (
     <Router>
       <Fragment>
-        <Navbar/>
+        <NavbarContainer/>
         <Route exact path="/" component={Landing}/>
         <section className="container">
           <AlertContainer/>

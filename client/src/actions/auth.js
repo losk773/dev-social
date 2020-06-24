@@ -6,3 +6,4 @@ export const getUserSuccess = createAction('GET_USER_SUCCESS', 'user');
 export const getUserError = createAction('GET_USER_ERROR');
 export const loginSuccess = createAction('LOGIN_SUCCESS', 'token');
 export const loginError = createAction('LOGIN_ERROR');
+export const logoutSuccess = createAction('LOGOUT_SUCCESS');
