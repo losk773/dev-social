@@ -1,6 +1,13 @@
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
-import { registerSuccess, registerFail, setAlert } from '../actions';
+import { 
+  registerSuccess,
+  registerFail,
+  getUserSuccess,
+  getUserError,
+  setAlert 
+} from '../actions';
+import { setAuthToken } from '../utils';
 
 export const register = ({name, email, password}) => async dispatch => {
   try {
@@ -15,6 +22,20 @@ export const register = ({name, email, password}) => async dispatch => {
     }
 
     dispatch(registerFail());
+    localStorage.removeItem('token');
+  }
+};
+
+export const getUser = () => async dispatch => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+
+  try {
+    const { data } = await axios.get('/api/auth');
+    dispatch(getUserSuccess(data));
+  } catch (error) {
+    dispatch(getUserError());
     localStorage.removeItem('token');
   }
 };

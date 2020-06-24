@@ -1,5 +1,10 @@
 import { createReducer } from '../utils';
-import { registerSuccess, registerFail } from '../actions';
+import { 
+  registerSuccess, 
+  registerFail,
+  getUserSuccess,
+  getUserError,
+} from '../actions';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -16,6 +21,18 @@ export const userReducer = createReducer(initialState, {
     loading: false,
   }),
   [registerFail]: (state) => ({
+    ...state,
+    token: null,
+    isAuth: false,
+    loading: false,
+  }),
+  [getUserSuccess]: (state, { user }) => ({
+    ...state,
+    isAuth: true,
+    loading: false,
+    user,
+  }),
+  [getUserError]: (state) => ({
     ...state,
     token: null,
     isAuth: false,
