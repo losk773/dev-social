@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export const Register = ({setAlert, register}) => {
+export const Register = ({setAlert, register, isAuth}) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,6 +24,11 @@ export const Register = ({setAlert, register}) => {
       register({name, email, password});
     }
   }
+
+  if (isAuth) {
+    return <Redirect to="/dashboard"/>;
+  }
+
   return (
     <React.Fragment>
       <h1 className="large text-primary">Sign Up</h1>
@@ -79,6 +84,7 @@ export const Register = ({setAlert, register}) => {
 };
 
 Register.propTypes = {
+  isAuth: PropTypes.bool,
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
 };

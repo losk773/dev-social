@@ -4,6 +4,7 @@ import {
   registerFail,
   getUserSuccess,
   getUserError,
+  loginSuccess,
 } from '../actions';
 
 const initialState = {
@@ -36,6 +37,12 @@ export const userReducer = createReducer(initialState, {
     ...state,
     token: null,
     isAuth: false,
+    loading: false,
+  }),
+  [loginSuccess]: (state, {token}) => ({
+    ...state,
+    token,
+    isAuth: true,
     loading: false,
   })
 });

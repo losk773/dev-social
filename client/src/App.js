@@ -6,7 +6,7 @@ import { Navbar } from "./components/layout/Navbar";
 import { Landing } from "./components/layout/Landing";
 import { Login } from './components/auth/Login';
 
-import { RegisterContainer } from './containers';
+import { RegisterContainer, LoginContainer } from './containers';
 import { AlertContainer } from './containers';
 import { getUser } from './thunks';
 
@@ -31,7 +31,7 @@ const App = ({getUser}) => {
           <AlertContainer/>
           <Switch>
             <Route exact path="/register" component={RegisterContainer}/>
-            <Route exact path="/login" component={Login}/>
+            <Route exact path="/login" component={LoginContainer}/>
           </Switch>
         </section>
       </Fragment>

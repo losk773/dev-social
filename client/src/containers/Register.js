@@ -4,6 +4,10 @@ import { setAlert, removeAlert } from '../actions';
 import { register } from '../thunks';
 import { v4 as uuid } from 'uuid';
 
+const mapStateToProps = ({user: { isAuth }}) => ({
+  isAuth,
+});
+
 const mapDispatchToProps = dispatch => {
   return {
     register: (data) => dispatch(register(data)),
@@ -18,4 +22,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

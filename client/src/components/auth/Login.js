@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 
-export const Login = () => {
+export const Login = ({login, isAuth}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -16,8 +17,13 @@ export const Login = () => {
   const onSubmit = async e => {
     e.preventDefault();
     
-    console.log('SUCCESS');
+    login(email, password);
   }
+
+  if (isAuth) {
+    return <Redirect to="/dashboard"/>;
+  }
+
   return (
     <React.Fragment>
       <h1 className="large text-primary">Sign In</h1>
@@ -49,4 +55,9 @@ export const Login = () => {
       </p>
     </React.Fragment>
   )
+};
+
+Login.propTypes = {
+  isAuth: PropTypes.bool,
+  login: PropTypes.func.isRequired,
 };
