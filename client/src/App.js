@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Landing } from "./components/layout/Landing";
 
-import { Dashboard } from "./components/dashboard/Dashboard";
 import { 
   RegisterContainer, 
   LoginContainer, 
   NavbarContainer,
   AlertContainer,
+  DashboardContainer,
 } from './containers';
 import PrivateRoute from './routes/PrivateRoute';
 import { getUser } from './thunks';
@@ -36,7 +36,7 @@ const App = ({getUser}) => {
           <Switch>
             <Route exact path="/register" component={RegisterContainer}/>
             <Route exact path="/login" component={LoginContainer}/>
-            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+            <PrivateRoute exact path="/dashboard" component={DashboardContainer}/>
           </Switch>
         </section>
       </Fragment>
