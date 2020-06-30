@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Navbar } from '../components/layout/Navbar';
-import { logoutSuccess } from '../actions';
+import { logoutSuccess, clearProfile } from '../actions';
 
 const mapStateToProps = ({user}) => ({
   user,
@@ -9,6 +9,7 @@ const mapStateToProps = ({user}) => ({
 const mapDispatchToProps = dispatch => ({
   logout: () => {
     localStorage.removeItem('token');
+    dispatch(clearProfile());
     dispatch(logoutSuccess());
   },
 });
