@@ -10,6 +10,7 @@ import {
   NavbarContainer,
   AlertContainer,
   DashboardContainer,
+  LandingContainer,
 } from './containers';
 import PrivateRoute from './routes/PrivateRoute';
 import { getUser } from './thunks';
@@ -30,7 +31,7 @@ const App = ({getUser}) => {
     <Router>
       <Fragment>
         <NavbarContainer/>
-        <Route exact path="/" component={Landing}/>
+        <Route exact path="/" component={LandingContainer}/>
         <section className="container">
           <AlertContainer/>
           <Switch>

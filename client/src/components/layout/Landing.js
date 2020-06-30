@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 
-export const Landing = () => {
+export const Landing = ({isAuth}) => {
+  if (isAuth) {
+    return <Redirect to="/dashboard"/>
+  }
+
   return (
     <section className="landing">
       <div className="dark-overlay">
@@ -19,4 +24,8 @@ export const Landing = () => {
       </div>
     </section>
   )
+};
+
+Landing.propTypes = {
+  isAuth: PropTypes.bool,
 }
