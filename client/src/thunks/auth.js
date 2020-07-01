@@ -20,7 +20,7 @@ export const register = ({name, email, password}) => async dispatch => {
     const errors = error.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(uuid(), error.msg, 'danger')))
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
     }
 
     dispatch(registerFail());
@@ -51,7 +51,7 @@ export const login = (email, password) => async dispatch => {
     const errors = error.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(uuid(), error.msg, 'danger')))
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
     }
 
     dispatch(loginError());
