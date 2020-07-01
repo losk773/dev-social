@@ -11,6 +11,7 @@ import {
   AlertContainer,
   DashboardContainer,
   LandingContainer,
+  CreateProfileContainer,
 } from './containers';
 import PrivateRoute from './routes/PrivateRoute';
 import { getUser } from './thunks';
@@ -38,6 +39,7 @@ const App = ({getUser}) => {
             <Route exact path="/register" component={RegisterContainer}/>
             <Route exact path="/login" component={LoginContainer}/>
             <PrivateRoute exact path="/dashboard" component={DashboardContainer}/>
+            <PrivateRoute exact path="/create-profile" component={CreateProfileContainer}/>
           </Switch>
         </section>
       </Fragment>
