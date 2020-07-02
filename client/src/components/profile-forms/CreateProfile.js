@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export const CreateProfile = ({createProfile}) => {
   const [formData, setFormData] = useState({
@@ -202,7 +203,7 @@ export const CreateProfile = ({createProfile}) => {
           )
         }
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+        <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
       </form>
     </React.Fragment>
   )
