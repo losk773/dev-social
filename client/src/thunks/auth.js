@@ -8,6 +8,7 @@ import {
   loginSuccess,
   loginError,
   setAlert,
+  removeAlert,
 } from '../actions';
 import { setAuthToken } from '../utils';
 
@@ -22,6 +23,10 @@ export const register = ({name, email, password}) => async dispatch => {
     if (errors) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
     }
+
+    setTimeout(() => {
+      dispatch(removeAlert())
+    }, 1000);
 
     dispatch(registerFail());
     localStorage.removeItem('token');
@@ -53,6 +58,10 @@ export const login = (email, password) => async dispatch => {
     if (errors) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
     }
+
+    setTimeout(() => {
+      dispatch(removeAlert())
+    }, 1000);
 
     dispatch(loginError());
     localStorage.removeItem('token');
