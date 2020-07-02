@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export const CreateProfile = props => {
+export const CreateProfile = ({createProfile}) => {
   const [formData, setFormData] = useState({
     company: '',
     website: '',
@@ -23,6 +23,11 @@ export const CreateProfile = props => {
     [target.name]: target.value
   });
 
+  const onSubmit = e => {
+    e.preventDefault();
+    createProfile(formData);
+  }
+
   return (
     <React.Fragment>
       <h1 className="large text-primary">
@@ -33,7 +38,7 @@ export const CreateProfile = props => {
         profile stand out
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <select 
             name="status" 
@@ -204,5 +209,5 @@ export const CreateProfile = props => {
 };
 
 CreateProfile.propTypes = {
-
+  createProfile: PropTypes.func.isRequired,
 };
