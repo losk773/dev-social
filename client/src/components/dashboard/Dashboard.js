@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Spinner } from '../layout/Spinner';
 import { Link } from 'react-router-dom';
+import { DashboardActions } from './DashboardActions';
 
 export const Dashboard = ({getProfile, user: { user }, profile: { loading, profile }}) => {
   useEffect(() => {
@@ -18,9 +19,7 @@ export const Dashboard = ({getProfile, user: { user }, profile: { loading, profi
         Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <React.Fragment>
-          has
-        </React.Fragment>
+        <DashboardActions/>
       ) : (
         <React.Fragment>
           <p>You have not yet setup a profile, please add some info</p>
