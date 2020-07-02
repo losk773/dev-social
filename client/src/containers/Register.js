@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Register } from '../components/auth/Register';
 import { setAlert, removeAlert } from '../actions';
-import { register } from '../thunks';
+import { register, getUser } from '../thunks';
 
 const mapStateToProps = ({user: { isAuth }}) => ({
   isAuth,
@@ -9,7 +9,10 @@ const mapStateToProps = ({user: { isAuth }}) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: (data) => dispatch(register(data)),
+    register: async (data) => {
+      await dispatch(register(data));
+      await dispatch(getUser());
+    },
     setAlert: (msg, alertType, timeout = 5000) => {
       dispatch(setAlert(msg, alertType))
     },
