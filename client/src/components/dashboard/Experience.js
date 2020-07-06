@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
-export const Experience = ({experience}) => {
+export const Experience = ({experience, deleteExperience}) => {
   const experiences = experience.map(exp => (
-    <tr key={exp.id}>
+    <tr key={exp._id}>
       <td>{exp.company}</td>
       <td className="hide-sm">{exp.title}</td>
       <td>
@@ -13,10 +13,19 @@ export const Experience = ({experience}) => {
         }
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger" onClick={() => deleteExperience(exp._id)}>Delete</button>
       </td>
     </tr>
   ));
+
+  if (experience.length <= 0) {
+    return (
+      <React.Fragment>
+        <h2 className="my-2">Experience Credentials</h2>
+        <p>Experience is not define</p>
+      </React.Fragment>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -38,4 +47,5 @@ export const Experience = ({experience}) => {
 
 Experience.propTypes = {
   experience: PropTypes.array.isRequired,
+  deleteExperience: PropTypes.func.isRequired,
 }

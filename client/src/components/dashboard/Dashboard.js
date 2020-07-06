@@ -9,7 +9,9 @@ import { Education } from './Education';
 export const Dashboard = ({
   getProfile, 
   user: { user }, 
-  profile: { loading, profile }
+  profile: { loading, profile },
+  deleteExperience,
+  deleteEducation,
 }) => {
 
   useEffect(() => {
@@ -28,8 +30,8 @@ export const Dashboard = ({
       {profile !== null ? (
         <React.Fragment>
           <DashboardActions/>
-          <Experience experience={profile.experience}/>
-          <Education education={profile.education}/>
+          <Experience experience={profile.experience} deleteExperience={deleteExperience}/>
+          <Education education={profile.education} deleteEducation={deleteEducation}/>
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -47,4 +49,6 @@ Dashboard.propTypes = {
   getProfile: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
+  deleteExperience: PropTypes.func.isRequired,
+  deleteEducation: PropTypes.func.isRequired,
 };

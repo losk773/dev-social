@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
-export const Education = ({education}) => {
+export const Education = ({education, deleteEducation}) => {
   const educations = education.map(edu => (
-    <tr key={edu.id}>
+    <tr key={edu._id}>
       <td>{edu.school}</td>
       <td className="hide-sm">{edu.degree}</td>
       <td>
@@ -13,10 +13,19 @@ export const Education = ({education}) => {
         }
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger" onClick={() => deleteEducation(edu._id)}>Delete</button>
       </td>
     </tr>
   ));
+
+  if (education.length <= 0) {
+    return (
+      <React.Fragment>
+        <h2 className="my-2">Education Credentials</h2>
+        <p>Education is not define</p>
+      </React.Fragment>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -38,4 +47,5 @@ export const Education = ({education}) => {
 
 Education.propTypes = {
   education: PropTypes.array.isRequired,
+  deleteEducation: PropTypes.func.isRequired,
 }
