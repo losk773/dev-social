@@ -8,3 +8,4 @@ export { default as CreateProfileContainer } from './CreateProfile';
 export { default as EditProfileContainer } from './EditProfile';
 export { default as AddExperienceContainer } from './AddExperience';
 export { default as AddEducationContainer } from './AddEducation';
+export { default as ProfilesContainer } from './Profiles';
