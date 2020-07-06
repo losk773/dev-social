@@ -12,6 +12,7 @@ export const Dashboard = ({
   profile: { loading, profile },
   deleteExperience,
   deleteEducation,
+  deleteAccount
 }) => {
 
   useEffect(() => {
@@ -32,6 +33,12 @@ export const Dashboard = ({
           <DashboardActions/>
           <Experience experience={profile.experience} deleteExperience={deleteExperience}/>
           <Education education={profile.education} deleteEducation={deleteEducation}/>
+          <div className="my-2">
+            <button className="btn btn-danger" onClick={deleteAccount}>
+              <i className="fas fa-user-minus"></i>{' '}
+              Delete my account
+            </button>
+          </div>
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -51,4 +58,5 @@ Dashboard.propTypes = {
   profile: PropTypes.object.isRequired,
   deleteExperience: PropTypes.func.isRequired,
   deleteEducation: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
 };

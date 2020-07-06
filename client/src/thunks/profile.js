@@ -6,6 +6,8 @@ import {
   updateProfileSuccess,
   setAlert,
   removeAlert,
+  clearProfile,
+  deletedAccountSuccess,
 } from '../actions';
 import { setAuthToken } from '../utils';
 
@@ -155,5 +157,27 @@ export const deleteEducation = (id) => async dispatch => {
     setTimeout(() => {
       dispatch(removeAlert());
     }, 3000);
+  }
+};
+
+export const deleteAccount = () => async dispatch => {
+  if (window.confirm('Are you sure? This cannot be undone!')) {
+    try {
+      const { data } = await axios.delete('/api/profile');
+      dispatch(clearProfile());
+      dispatch(deletedAccountSuccess());
+      dispatch(setAlert('Your account has been deleted', 'success'));
+      
+      localStorage.removeItem('token');
+
+      setTimeout(() => {
+        dispatch(removeAlert());
+      }, 3000);
+    } catch (error) {
+      dispatch(getProfileError({
+        msg: error.response.statusText, 
+        status: error.response.status
+      }));
+    }
   }
 };

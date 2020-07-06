@@ -6,6 +6,7 @@ import {
   getUserError,
   loginSuccess,
   logoutSuccess,
+  deletedAccountSuccess,
 } from '../actions';
 
 const initialState = {
@@ -21,5 +22,6 @@ export const userReducer = createReducer(initialState, {
   [getUserSuccess]: (state, { user }) => ({...state, isAuth: true, loading: false, user }),
   [getUserError]: (state) => ({...state, token: null, isAuth: false, loading: false }),
   [loginSuccess]: (state, {token}) => ({ ...state, token, isAuth: true, loading: false }),
-  [logoutSuccess]: (state) => ({token: null, isAuth: false, loading: false, user: null })
+  [logoutSuccess]: (state) => ({token: null, isAuth: false, loading: false, user: null }),
+  [deletedAccountSuccess]: (state) => ({token: null, isAuth: false, loading: false, user: null }),
 });
