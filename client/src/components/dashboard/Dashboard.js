@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import { Spinner } from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import { DashboardActions } from './DashboardActions';
+import { Experience } from './Experience';
+import { Education } from './Education';
 
-export const Dashboard = ({getProfile, user: { user }, profile: { loading, profile }}) => {
+export const Dashboard = ({
+  getProfile, 
+  user: { user }, 
+  profile: { loading, profile }
+}) => {
+
   useEffect(() => {
     if (!profile) {
       getProfile();
@@ -19,7 +26,11 @@ export const Dashboard = ({getProfile, user: { user }, profile: { loading, profi
         Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <DashboardActions/>
+        <React.Fragment>
+          <DashboardActions/>
+          <Experience experience={profile.experience}/>
+          <Education education={profile.education}/>
+        </React.Fragment>
       ) : (
         <React.Fragment>
           <p>You have not yet setup a profile, please add some info</p>
