@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Landing } from "./components/layout/Landing";
 
 import { 
   RegisterContainer, 
@@ -15,6 +14,7 @@ import {
   EditProfileContainer,
   AddExperienceContainer,
   AddEducationContainer,
+  ProfilesContainer,
 } from './containers';
 import PrivateRoute from './routes/PrivateRoute';
 import { getUser } from './thunks';
@@ -41,6 +41,7 @@ const App = ({getUser}) => {
           <Switch>
             <Route exact path="/register" component={RegisterContainer}/>
             <Route exact path="/login" component={LoginContainer}/>
+            <Route exact path="/profiles" component={ProfilesContainer}/>
             <PrivateRoute exact path="/dashboard" component={DashboardContainer}/>
             <PrivateRoute exact path="/create-profile" component={CreateProfileContainer}/>
             <PrivateRoute exact path="/edit-profile" component={EditProfileContainer}/>
