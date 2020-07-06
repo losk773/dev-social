@@ -3,6 +3,8 @@ import { v4 as uuid } from 'uuid';
 import {
   getProfileSuccess,
   getProfileError,
+  getProfilesSuccess,
+  getGithubReposSuccess,
   updateProfileSuccess,
   setAlert,
   removeAlert,
@@ -16,6 +18,47 @@ export const getProfile = () => async dispatch => {
     const { data } = await axios.get('/api/profile/me');
 
     dispatch(getProfileSuccess(data));
+  } catch (error) {
+    dispatch(getProfileError({
+      msg: error.response.statusText, 
+      status: error.response.status
+    }));
+  }
+};
+
+export const getProfiles = () => async dispatch => {
+  try {
+    dispatch(clearProfile());
+
+    const { data } = await axios.get('/api/profile');
+
+    dispatch(getProfilesSuccess(data));
+  } catch (error) {
+    dispatch(getProfileError({
+      msg: error.response.statusText, 
+      status: error.response.status
+    }));
+  }
+};
+
+export const getProfileById = userId => async dispatch => {
+  try {
+    const { data } = await axios.get(`/api/profile/user/${userId}`);
+
+    dispatch(getProfileSuccess(data));
+  } catch (error) {
+    dispatch(getProfileError({
+      msg: error.response.statusText, 
+      status: error.response.status
+    }));
+  }
+};
+
+export const getGithubRepos = username => async dispatch => {
+  try {
+    const { data } = await axios.get(`/api/profile/github/${username}`);
+
+    dispatch(getGithubReposSuccess(data));
   } catch (error) {
     dispatch(getProfileError({
       msg: error.response.statusText, 
