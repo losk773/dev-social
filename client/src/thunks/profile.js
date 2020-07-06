@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { v4 as uuid } from 'uuid';
 import {
   getProfileSuccess,
   getProfileError,
@@ -11,7 +10,6 @@ import {
   clearProfile,
   deletedAccountSuccess,
 } from '../actions';
-import { setAuthToken } from '../utils';
 
 export const getProfile = () => async dispatch => {
   try {
@@ -206,7 +204,8 @@ export const deleteEducation = (id) => async dispatch => {
 export const deleteAccount = () => async dispatch => {
   if (window.confirm('Are you sure? This cannot be undone!')) {
     try {
-      const { data } = await axios.delete('/api/profile');
+      await axios.delete('/api/profile');
+      
       dispatch(clearProfile());
       dispatch(deletedAccountSuccess());
       dispatch(setAlert('Your account has been deleted', 'success'));

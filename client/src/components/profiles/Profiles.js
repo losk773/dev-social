@@ -6,7 +6,7 @@ import { ProfileItem } from './ProfileItem';
 export const Profiles = ({profile: { profiles, loading }, getProfiles}) => {
   useEffect(() => {
     getProfiles();
-  }, []);
+  }, [getProfiles]);
 
   return loading ? <Spinner/> : (
     <React.Fragment>

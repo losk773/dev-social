@@ -38,7 +38,7 @@ export const EditProfile = ({profile: { profile, loading }, createProfile, getPr
       youtube: loading || !profile.youtube ? '' : profile.youtube,
       instagram: loading || !profile.instagram ? '' : profile.instagram,
     });
-  }, [loading]);
+  }, [getProfile, loading, profile]);
 
   const onChange = ({target}) => setFormData({
     ...formData,

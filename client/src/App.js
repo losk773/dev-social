@@ -29,7 +29,7 @@ if (localStorage.token) {
 const App = ({getUser}) => {
   useEffect(() => {
     getUser();
-  }, []);
+  }, [getUser]);
 
   return (
     <Router>

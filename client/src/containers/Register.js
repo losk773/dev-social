@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Register } from '../components/auth/Register';
-import { setAlert, removeAlert } from '../actions';
+import { setAlert } from '../actions';
 import { register, getUser } from '../thunks';
 
 const mapStateToProps = ({user: { isAuth }}) => ({

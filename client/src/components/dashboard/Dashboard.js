@@ -19,7 +19,7 @@ export const Dashboard = ({
     if (!profile) {
       getProfile();
     }
-  }, []);
+  }, [getProfile, profile]);
 
   return loading && profile === null ? <Spinner/> : (
     <React.Fragment>
