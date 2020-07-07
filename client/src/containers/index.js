@@ -10,3 +10,4 @@ export { default as AddExperienceContainer } from './AddExperience';
 export { default as AddEducationContainer } from './AddEducation';
 export { default as ProfilesContainer } from './Profiles';
 export { default as ProfileContainer } from './Profile';
+export { default as PostsContainer } from './Posts';
