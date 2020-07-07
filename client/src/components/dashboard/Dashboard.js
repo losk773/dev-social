@@ -46,6 +46,10 @@ export const Dashboard = ({
           <Link to='/create-profile' className="btn btn-primary my-1">
             Create Profile
           </Link>
+          <button className="btn btn-danger" onClick={deleteAccount}>
+            <i className="fas fa-user-minus"></i>{' '}
+            Delete my account
+          </button>
         </React.Fragment>
       )}
     </React.Fragment>

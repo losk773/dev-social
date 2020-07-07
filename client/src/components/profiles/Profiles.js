@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { Spinner } from '../../components/layout/Spinner';
 import { ProfileItem } from './ProfileItem';
 
-export const Profiles = ({profile: { profiles, loading }, getProfiles}) => {
+export const Profiles = ({profile: { profiles, loading }, user, getProfiles}) => {
   useEffect(() => {
-    if (!profiles.length) {
-      getProfiles();
-    }
+    getProfiles();
   }, []);
 
   return loading ? <Spinner/> : (
