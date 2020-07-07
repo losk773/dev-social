@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Profile from '../components/profile/Profile';
-import { getProfileById } from '../thunks';
+import { getProfileById, getGithubRepos } from '../thunks';
 
 const mapStateToProps = ({profile, user}) => ({
   profile,
@@ -8,7 +8,8 @@ const mapStateToProps = ({profile, user}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProfileById: (id) => dispatch(getProfileById(id))
+  getProfileById: (id) => dispatch(getProfileById(id)),
+  getGithubRepos: (username) => dispatch(getGithubRepos(username)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
