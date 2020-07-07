@@ -15,6 +15,7 @@ import {
   AddExperienceContainer,
   AddEducationContainer,
   ProfilesContainer,
+  ProfileContainer,
 } from './containers';
 import PrivateRoute from './routes/PrivateRoute';
 import { getUser } from './thunks';
@@ -42,6 +43,7 @@ const App = ({getUser}) => {
             <Route exact path="/register" component={RegisterContainer}/>
             <Route exact path="/login" component={LoginContainer}/>
             <Route exact path="/profiles" component={ProfilesContainer}/>
+            <Route exact path="/profile/:id" component={ProfileContainer}/>
             <PrivateRoute exact path="/dashboard" component={DashboardContainer}/>
             <PrivateRoute exact path="/create-profile" component={CreateProfileContainer}/>
             <PrivateRoute exact path="/edit-profile" component={EditProfileContainer}/>
