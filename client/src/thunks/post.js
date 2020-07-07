@@ -2,7 +2,10 @@ import axios from 'axios';
 import { 
   getPostsSuccess,
   getPostsError,
-  updateLikesSuccess
+  updateLikesSuccess,
+  deletePostSuccess,
+  setAlert,
+  removeAlert,
 } from '../actions';
 
 export const getPosts = () => async dispatch => {
@@ -36,6 +39,24 @@ export const removeLike = (postId) => async dispatch => {
     const { data } = await axios.put(`/api/posts/unlike/${postId}`);
 
     dispatch(updateLikesSuccess(postId, data));
+  } catch (error) {
+    dispatch(getPostsError({
+      msg: error.response.statusText, 
+      status: error.response.status
+    }));
+  }
+};
+
+export const deletePost = (postId) => async dispatch => {
+  try {
+    await axios.delete(`/api/posts/${postId}`);
+
+    dispatch(deletePostSuccess(postId));
+    dispatch(setAlert('The post has been deleted', 'success'));
+
+    setTimeout(() => {
+      dispatch(removeAlert());
+    }, 3000);
   } catch (error) {
     dispatch(getPostsError({
       msg: error.response.statusText, 
