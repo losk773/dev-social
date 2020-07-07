@@ -11,6 +11,9 @@ export const Navbar = ({user: { isAuth, loading }, logout}) => {
   const authLinks = (
     <ul>
       <li>
+        <Link to="/posts">Posts</Link>
+      </li>
+      <li>
         <Link to="/profiles">Developers</Link>
       </li>
       <li>
