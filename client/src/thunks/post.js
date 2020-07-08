@@ -4,6 +4,7 @@ import {
   getPostsError,
   updateLikesSuccess,
   deletePostSuccess,
+  addPostSuccess,
   setAlert,
   removeAlert,
 } from '../actions';
@@ -53,6 +54,24 @@ export const deletePost = (postId) => async dispatch => {
 
     dispatch(deletePostSuccess(postId));
     dispatch(setAlert('The post has been deleted', 'success'));
+
+    setTimeout(() => {
+      dispatch(removeAlert());
+    }, 3000);
+  } catch (error) {
+    dispatch(getPostsError({
+      msg: error.response.statusText, 
+      status: error.response.status
+    }));
+  }
+};
+
+export const addPost = (formData) => async dispatch => {
+  try {
+    const { data } = await axios.post('/api/posts', formData);
+
+    dispatch(addPostSuccess(data));
+    dispatch(setAlert('The post created', 'success'));
 
     setTimeout(() => {
       dispatch(removeAlert());
