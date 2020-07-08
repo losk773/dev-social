@@ -20,7 +20,7 @@ const Profile = ({ profile: { profile, loading, repos }, user, getProfileById, g
   return (
     <React.Fragment>
       <Link to="/profiles" className="btn btn-light">Back To Profiles</Link>
-      {user.isAuth && user.loading === false && (
+      {user.isAuth && user.loading === false && user.user._id === profile.user._id && (
         <Link to="/edit-profile" className="btn btn-dark">Edit Profile</Link>
       )}
       <div className="profile-grid my-1">
