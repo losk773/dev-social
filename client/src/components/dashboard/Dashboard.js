@@ -16,12 +16,14 @@ export const Dashboard = ({
 }) => {
 
   useEffect(() => {
-    if (!profile) {
-      getProfile();
-    }
-  }, [getProfile, profile]);
+    getProfile();
+  }, [getProfile]);
 
-  return loading && profile === null ? <Spinner/> : (
+  if (loading || !profile) {
+    return <Spinner/> ;
+  }
+
+  return (
     <React.Fragment>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">

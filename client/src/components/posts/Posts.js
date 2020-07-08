@@ -45,7 +45,7 @@ export const Posts = ({
 }
 
 Posts.propTypes = {
-  post: PropTypes.array.isRequired,
+  post: PropTypes.object.isRequired,
   getPosts: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,

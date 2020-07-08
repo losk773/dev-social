@@ -37,7 +37,7 @@ export const CommentItem = ({
 }
 
 CommentItem.propTypes = {
-  comment: PropTypes.string.isRequired,
+  comment: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
   deleteComment: PropTypes.func,
   user: PropTypes.object.isRequired,
