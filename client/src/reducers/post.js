@@ -2,6 +2,7 @@ import { createReducer } from '../utils';
 import { 
   getPostsSuccess, 
   getPostsError, 
+  getPostSuccess,
   updateLikesSuccess, 
   deletePostSuccess,
   addPostSuccess,
@@ -16,6 +17,7 @@ const initialState = {
 
 export const postReducer = createReducer(initialState, {
   [getPostsSuccess]: (state, { posts }) => ({...state, posts, loading: false}),
+  [getPostSuccess]: (state, { post }) => ({...state, post, loading: false}),
   [deletePostSuccess]: (state, { postId }) => ({
     ...state,
     posts: state.posts.filter(post => post._id !== postId),

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { 
   getPostsSuccess,
+  getPostSuccess,
   getPostsError,
   updateLikesSuccess,
   deletePostSuccess,
@@ -81,5 +82,15 @@ export const addPost = (formData) => async dispatch => {
       msg: error.response.statusText, 
       status: error.response.status
     }));
+  }
+};
+
+export const getPostBytId = (postId) => async dispatch => {
+  try {
+    const { data } = await axios.get(`/api/posts/${postId}`);
+
+    dispatch(getPostSuccess(data));
+  } catch (error) {
+    console.log(error);
   }
 };
