@@ -8,13 +8,12 @@ Social Network for Developers
 
 ```
 # added default.json file in config folder
-
-```
-  "mongoURI": "mongodb+srv://losk773:losk773@cluster0-3wiig.mongodb.net/dev_social retryWrites=true&w=majority",
-  "jwtSecret": "mysecrettoken",
-  "githubClientId": "abced26dbf5c4e84338e",
-  "githubSecret": "64a7c3f53a39e2afdff3f6bc83206202658051ab"
-```
+  {
+    "mongoURI": "mongodb+srv://losk773:losk773@cluster0-3wiig.mongodb.net/dev_social retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "abced26dbf5c4e84338e",
+    "githubSecret": "64a7c3f53a39e2afdff3f6bc83206202658051ab"
+  }
 
 # this file is located in config/default.json
 
