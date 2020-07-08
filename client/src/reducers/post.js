@@ -6,6 +6,8 @@ import {
   updateLikesSuccess, 
   deletePostSuccess,
   addPostSuccess,
+  addCommentSuccess,
+  deleteCommentSuccess,
 } from '../actions';
 
 const initialState = {
@@ -33,5 +35,18 @@ export const postReducer = createReducer(initialState, {
     ...state,
     loading: false,
     posts: state.posts.map(post => post._id === postId ? {...post, likes} : post)
+  }),
+  [addCommentSuccess]: (state, { comment }) => ({
+    ...state,
+    loading: false,
+    post: {...state.post, comments: comment}
+  }),
+  [deleteCommentSuccess]: (state, { commentId }) => ({
+    ...state,
+    loading: false,
+    post: {
+      ...state.post,
+      comments: state.post.comments.filter(comment => comment._id !== commentId)
+    }
   }),
 });

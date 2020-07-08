@@ -6,3 +6,5 @@ export const getPostsError = createAction('GET_POSTS_ERROR', 'error');
 export const updateLikesSuccess = createAction('UPDATE_LIKES_SUCCESS', 'postId', 'likes');
 export const deletePostSuccess = createAction('DELETE_POST_SUCCESS', 'postId');
 export const addPostSuccess = createAction('ADD_POST_SUCCESS', 'post');
+export const addCommentSuccess = createAction('ADD_COMMENT_SUCCESS', 'comment');
+export const deleteCommentSuccess = createAction('DELETE_COMMENT_SUCCESS', 'commentId');
