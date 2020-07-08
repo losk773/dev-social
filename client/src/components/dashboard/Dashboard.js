@@ -17,9 +17,9 @@ export const Dashboard = ({
 
   useEffect(() => {
     getProfile();
-  }, [getProfile]);
+  }, []);
 
-  if (loading || !profile) {
+  if (loading) {
     return <Spinner/> ;
   }
 
