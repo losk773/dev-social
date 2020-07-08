@@ -1,4 +1,4 @@
-# dev-social
+# Description
 Social Network for Developers
 
 # Demo
